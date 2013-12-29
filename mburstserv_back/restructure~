@@ -1,0 +1,5 @@
+main server, listens for requests from port 50001
+
+on receiving a request, spawn a process to handle all comms for that request
+
+each request will have a session id, and sequence # for desync issues

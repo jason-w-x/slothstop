@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Submit</h1>
+<form action="" method="post" name="submit">
+    {{form.hidden_tag()}}
+    <p>
+        Callsign to track:<br>
+        {{form.callsign(size=80)}}<br>
+	{% for error in form.errors.callsign %}
+        <span style="color: red;">[{{error}}]</span>
+        {% endfor %}<br>	
+    </p>
+    <p>
+        Payload weight(lb):<br>
+        {{form.weight(size=80)}}<br>
+	{% for error in form.errors.weight %}
+        <span style="color: red;">[{{error}}]</span>
+        {% endfor %}<br>	
+    </p>
+    <p>
+        Parachute diameter(m):<br>
+        {{form.parachute(size=80)}}<br>
+	{% for error in form.errors.diameter %}
+        <span style="color: red;">[{{error}}]</span>
+        {% endfor %}<br>	
+    </p>
+    <p>
+        Balloon size(g):<br>
+        {{form.balloon(size=80)}}<br>
+	{% for error in form.errors.balloon %}
+        <span style="color: red;">[{{error}}]</span>
+        {% endfor %}<br>	
+    </p>
+    <p>
+        Tanks of helium:<br>
+        {{form.helium(size=80)}}<br>
+	{% for error in form.errors.helium %}
+        <span style="color: red;">[{{error}}]</span>
+        {% endfor %}<br>	
+    </p>
+    <p><input type="submit" value="Sign In"></p>
+</form>
+{% endblock %}

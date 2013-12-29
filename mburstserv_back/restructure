@@ -1,0 +1,11 @@
+main server, listens for requests from port 50001
+
+on receiving a request, spawn a process to handle all comms for that request
+
+each request will have a session id, and sequence # for desync issues
+
+
+Requests will contain callsign, payload weight, parachute size, amnt helium, balloon size
+
+Upon receiving a request, check to see if a request with matching inputs is already active
+     - check callsign only? or hash entire request?
