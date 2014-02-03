@@ -20,8 +20,4 @@ def runreal_wrapper(*args, **kwargs):
     #runreal(callsign, weight, balloon, parachute, helium)
     
     os.chdir('rt')
-    os.system("perl runreal.pl -callsign={0} -weight={1} -balloon={2} -parachute={3} -helium={4}".format(callsign,
-                                                                                                            weight,
-                                                                                                            balloon,
-                                                                                                            parachute,
-                                                                                                            helium))
+    os.system("perl runreal.pl -callsign={0} -weight={1} -balloon={2} -parachute={3} -helium={4}".format(callsign,                                                                       weight,                                                                         balloon,																		 parachute,																		 helium))

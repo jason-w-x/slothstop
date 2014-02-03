@@ -4,12 +4,12 @@ import signal
 import sys
 from threading import Thread
 from multiprocessing import Process
+from rt.aprs import APRSIS
 from rt.APRSparse import fetch_and_write
 from rt.runreal import runreal_wrapper
 
 def signal_handler(signal,frame):
     sys.exit(0)
-
 
 def start_real_time(*args,**kwargs):
     print("func called with args {0}\n".format(kwargs))
@@ -26,6 +26,7 @@ def handle_req(*args, **kwargs):
     addr = args[1]
 
     msg = json.loads(clientsock.recv(1028))
+	
     # send ack
     clientsock.send("received thnx")
     clientsock.close()
@@ -38,7 +39,6 @@ def handle_req(*args, **kwargs):
     
     func = globals()[name]
     func(**kws)    
-    
 
 def listen():
     host = "127.0.0.1"
@@ -59,8 +59,6 @@ def listen():
 
         req_process = Process(target=handle_req,args=((clientsock,addr)))
 		req_process.start()
-
-
         
 if __name__ == "__main__":
     # setup stuff? if necessary
