@@ -305,6 +305,9 @@ if ($aprs) {
 	}
 
     }
+    #Convert to here in python
+
+
 
 #    while (<APRS>) {
 #

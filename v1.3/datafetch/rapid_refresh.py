@@ -93,6 +93,8 @@ class rapid_refresh(object):
             self.veas.append(e)
         file.close()
 
+        
+
 if __name__ == "__main__":
     # used for testing
     rap = rapid_refresh()
