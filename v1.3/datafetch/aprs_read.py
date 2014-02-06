@@ -61,6 +61,8 @@ class aprs_read(object):
                     lonold = lon
                     hghtold = alt
                     print('{0} {1} {2}\n'.format(time, lat, lon))
+
+                    #Port from driver.pl
         file.close()
 
 

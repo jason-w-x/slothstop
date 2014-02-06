@@ -172,7 +172,7 @@ void CPrediction::ascentPrediction()
   vol  = calcVol(temp, press);
   diam = calcDiam(vol);
 
-  while((diam <= burstDiam)) 
+  while(diam <= burstDiam) 
   { 
     //diameter check performed here so burst point writes to file successfully
     //if (predictedCounter > 0) diameter = newDiameter;
@@ -184,7 +184,7 @@ void CPrediction::ascentPrediction()
     temp  = calcTemp(tempGeo.elev) * GetRandom();
     press = calcPress(tempGeo.elev, temp) * GetRandom();
 
-    gravity = calcGravity( tempGeo.elev );
+    gravity = calcGravity(tempGeo.elev);
 
     atmDensity = calcDensity(temp, press, GAS_CONST_A);
     helDensity = calcDensity(temp, press, GAS_CONST_H);
@@ -196,7 +196,7 @@ void CPrediction::ascentPrediction()
     //calculate Velocity North and East
     vNorth = interpolateVNorth(tempGeo.elev);
     vr = 0.0001 * GetRandom() - 0.0001;
-    vNorth = vNorth*GetRandom() + vr;
+    vNorth = vNorth * GetRandom() + vr;
 
     vEast = interpolateVEast(tempGeo.elev);
     vr = 0.00015 * GetRandom() - 0.00015;
@@ -213,7 +213,7 @@ void CPrediction::ascentPrediction()
       //  This is an altitude condition
       if(tempGeo.elev >= -burstCond) 
       {
-	diam = burstDiam + 1.0;
+	    diam = burstDiam + 1.0;
       }
     }
     else if(burstCond > 0.0) 
@@ -277,6 +277,7 @@ void CPrediction::descentPrediction()
   }
 }
 
+//Bring this function into glorious C++11 syntax
 float CPrediction::GetRandom() 
 {
   float RandomPercent = 0; // just for now
@@ -339,7 +340,7 @@ float CPrediction::calcTemp(float height)
     {
       if((height <= pData[i].height) && (height > pData[i-1].height))
       {
-	return linearInterp(pData[i-1].height, pData[i].height, pData[i-1].temp, pData[i].temp, height);
+	    return linearInterp(pData[i-1].height, pData[i].height, pData[i-1].temp, pData[i].temp, height);
       }
     }
   }
@@ -371,7 +372,7 @@ float CPrediction::calcPress(float height, float temp)
     {
       if((height <= pData[i].height) && (height > pData[i-1].height)) 
       {
-	return linearInterp(pData[i-1].height, pData[i].height, pData[i-1].press, pData[i].press, height);
+	    return linearInterp(pData[i-1].height, pData[i].height, pData[i-1].press, pData[i].press, height);
       }
     }
   }
