@@ -3,14 +3,16 @@ import re
 import time
 
 if __name__ == "__main__":
-    dat = []
-    file = open('aprs.xml','r')
-    for line in file:
-        r = re.findall(r'(.+) (.+) (.+) (.+)\r',line)
-        if r:
-            dat.append((r[0][1],r[0][2],r[0][3]))
-    file.close()
     while True:
+        dat = []
+        file = open('aprs.xml','r')
+        for line in file:
+            r = re.findall(r'(.+) (.+) (.+) (.+)\r',line)
+            if r:
+                dat.append((r[0][1],r[0][2],r[0][3]))
+        
+        file.close()
+        
         if dat:
             zp = ZP_Prediction(dat[-1][0],dat[-1][1],dat[-1][2], 301, 10800)
         else:
