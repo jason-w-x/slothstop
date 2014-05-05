@@ -10,13 +10,13 @@ class aprs_read(object):
         self.lon  = []  # used only to print prev points
         self.vnor = []  # wind speed north (m/s)
         self.veas = []  # wind speed east (m/s)
-        self.wspd = []  # wind speed (m/s) APRSSpeed
-
-
-
 
     def read_xml(self, filename):
-        file = open(filename, 'r')
+        try:
+            file = open(filename, 'r')
+        except IOError:
+            print("No aprs\n")
+            return None# file doesn't exist yet
 
         timeold = 0.0
         hghtold = None
@@ -26,6 +26,7 @@ class aprs_read(object):
         burst1 = False
         burst2 = False
         burst3 = False
+        print("Parsing APRS data\n")
         for line in file:
             r = re.findall('<time>(.+)</time><lat>(.+)</lat><lng>(.+)</lng><alt>(.+)</alt>', line)
             if r:
@@ -39,9 +40,12 @@ class aprs_read(object):
                     if latold:
                         dr = math.radians(6372000.0+alt)
                         correction = math.cos(math.radians(lat))
-                        self.vnor.append((lat-latold)/dt*dr)
-                        self.veas.append((lon-lonold)/dt*dr*correction)
-
+                        vn = (lat-latold)/dt*dr
+                        ve = (lon-lonold)/dt*dr*correction
+                        self.hght.append(alt)
+                        self.vnor.append(vn)
+                        self.veas.append(ve)
+                        
                         # calc vertical velocity
                         vvert = (alt-hghtold)/dt
                         #TODO check if first point is at srb
@@ -64,40 +68,43 @@ class aprs_read(object):
                     latold = lat
                     lonold = lon
                     hghtold = alt
-                    print('{0} {1} {2}\n'.format(time, lat, lon))
+                    timeold = time
+                    #print('{0} {1} {2}\n'.format(time, lat, lon))
         file.close()
 
 
+    def spd_cmp(self, t1, t2):      # compares two tuples of (Vn, Ve)
+        return int(math.sqrt(t1[0]*t1[0] + t1[1]*t1[1]) - math.sqrt(t2[0]*t2[0] + t2[1]*t2[1]))
 
 
-    #Median Filter
-    def median_filter(self):
-        iAPRS = 0
-        
-        for speed in self.wspd
-            #First assume that the middle value is the median
-            iMedian = iAPRS  
+    def median(self, ln, le):    # takes list of Vn and Ve, assume odd number of elements
+        if ln is None or le is None:
+            return None
 
-            if iAPRS > 0 and iAPRS < len(self.wspd) - 1:
-                if self.wspd[iAPRS - 1] > self.wspd[iAPRS] and self.wspd[iAPRS - 1] < self.wspd[iARPS + 1] or \
-                   self.wspd[iAPRS - 1] < self.wspd[iAPRS] and self.wspd[iAPRS - 1] > self.wspd[iAPRS + 1]:
-                    iMedian = iAPRS - 1
-
-                if self.wspd[iAPRS + 1] > self.wspd[iAPRS] and self.wspd[iAPRS + 1] < self.wspd[iAPRS - 1] or \ 
-                   self.wspd[iAPRS + 1] < self.wspd[iAPRS] and self.wspd[iAPRS + 1] > self.wspd[iAPRS - 1]:
-                    iMedian = iAPRS + 1
+        list = [(vn, ve) for vn, ve in zip(ln, le)]
+        #print(list)
             
-            self.vnor[iAPRS] = self.vnor[iMedian]
-            self.veas[iARPS] = self.veas[iMedian]
+        sort = sorted(list, self.spd_cmp)
+        length = len(sort)
+        return sort[length/2];
 
-            iAPRS = iAPRS + 1
+    
+    def median_filter(self):
+        print("Smoothing APRS data\n")
+        for i in range(1,len(self.vnor)-1):
+            vn, ve = self.median(self.vnor[i-1:i+2], self.veas[i-1:i+2])
+            #print("vn: {0} ve: {1}\n".format(vn, ve))
+            
+            self.vnor[i] = vn
+            self.veas[i] = ve
+            
+    def get_h_and_spd(self):
+        return zip(self.hght, self.vnor, self.veas)
 
+    def get_loc(self):
+        return zip(self.lat, self.lon)
     
-    
-    
-    #Replace the ARL data with APRS data
-    def overwrite_data(self):
-        
 if __name__ == "__main__":
     aprs = aprs_read()
     aprs.read_xml('aprs.xml')
+    aprs.median_filter()

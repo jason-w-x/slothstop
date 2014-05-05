@@ -1,12 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
-<time>1365874222</time><lat>41.79689</lat><lng>-85.39987</lng><alt>225.00000</alt><course>121.00000</course><speed>0.00000</speed>
+<time>1390063351</time><lat>42.09048</lat><lng>-84.98984</lng><alt>289.86480</alt><course>0.00000</course><speed>0.00000</speed>
 <?xml version="1.0" encoding="utf-8"?>
-<time>1365874342</time><lat>41.79674</lat><lng>-85.39933</lng><alt>288.00000</alt><course>113.00000</course><speed>0.00000</speed>
+<time>1390063351</time><lat>42.09048</lat><lng>-84.98984</lng><alt>289.86480</alt><course>0.00000</course><speed>0.00000</speed>
 <?xml version="1.0" encoding="utf-8"?>
-<time>1365874581</time><lat>41.79676</lat><lng>-85.39921</lng><alt>274.00000</alt><course>280.00000</course><speed>0.00000</speed>
+<time>1390063351</time><lat>42.09048</lat><lng>-84.98984</lng><alt>289.86480</alt><course>0.00000</course><speed>0.00000</speed>
 <?xml version="1.0" encoding="utf-8"?>
-<time>1365874701</time><lat>41.79699</lat><lng>-85.40065</lng><alt>225.00000</alt><course>273.00000</course><speed>1.85200</speed>
+<time>1390066679</time><lat>42.09661</lat><lng>-84.98769</lng><alt>997.91520</alt><course>35.00000</course><speed>40.74400</speed>
 <?xml version="1.0" encoding="utf-8"?>
-<time>1365875069</time><lat>41.79676</lat><lng>-85.39945</lng><alt>284.00000</alt><course>133.00000</course><speed>0.00000</speed>
+<time>1390066769</time><lat>42.10143</lat><lng>-84.98629</lng><alt>1594.71360</alt><course>350.00000</course><speed>18.52000</speed>
 <?xml version="1.0" encoding="utf-8"?>
-<time>1365875219</time><lat>41.79677</lat><lng>-85.39927</lng><alt>280.00000</alt><course>206.00000</course><speed>0.00000</speed>
+<time>1390066859</time><lat>42.10483</lat><lng>-84.98122</lng><alt>2190.59760</alt><course>55.00000</course><speed>22.22400</speed>
+<?xml version="1.0" encoding="utf-8"?>
+<time>1390067039</time><lat>42.10656</lat><lng>-84.96162</lng><alt>3424.73280</alt><course>88.00000</course><speed>24.07600</speed>
+<?xml version="1.0" encoding="utf-8"?>
+<time>1390067129</time><lat>42.10420</lat><lng>-84.95002</lng><alt>4045.61040</alt><course>82.00000</course><speed>31.48400</speed>
+<?xml version="1.0" encoding="utf-8"?>
+<time>1390067309</time><lat>42.09889</lat><lng>-84.91577</lng><alt>5280.66000</alt><course>115.00000</course><speed>66.67200</speed>
+<?xml version="1.0" encoding="utf-8"?>
+<time>1390067399</time><lat>42.09619</lat><lng>-84.89647</lng><alt>5886.60240</alt><course>110.00000</course><speed>57.41200</speed>
+<?xml version="1.0" encoding="utf-8"?>
+<time>1390067489</time><lat>42.09416</lat><lng>-84.87716</lng><alt>6510.52800</alt><course>90.00000</course><speed>75.93200</speed>
+<?xml version="1.0" encoding="utf-8"?>
+<time>1390067579</time><lat>42.09431</lat><lng>-84.85426</lng><alt>7131.40560</alt><course>92.00000</course><speed>85.19200</speed>
+<?xml version="1.0" encoding="utf-8"?>
+<time>1390067759</time><lat>42.09750</lat><lng>-84.78510</lng><alt>8376.20880</alt><course>82.00000</course><speed>133.34400</speed>
+<?xml version="1.0" encoding="utf-8"?>
+<time>1390067900</time><lat>42.09609</lat><lng>-84.74561</lng><alt>8939.17440</alt><course>97.00000</course><speed>125.93600</speed>
+<?xml version="1.0" encoding="utf-8"?>
+<time>1390068029</time><lat>42.09442</lat><lng>-84.68659</lng><alt>10188.24480</alt><course>97.00000</course><speed>114.82400</speed>

@@ -57,7 +57,7 @@ while( !$Done )
 	
 	$aprsfile = "aprs_".$callsign."_".$year."_".$sMon."_".$sMday.".xml";
 	
-	$command = "perl driver.pl -payload=6.1 -balloon=600 -parachute=6.0 -helium=1.5 -predict -burstheight=11390 -callsign=".$callsign." -arl=ARL.txt -aprs=".$aprsfile;
+	$command = "perl driver.pl -payload=7 -balloon=800 -parachute=6.0 -helium=2.0 -predict -callsign=".$callsign." -arl=ARL.txt -aprs=".$aprsfile;
 	print $command."\n";
 	system $command;
 	

@@ -70,7 +70,7 @@ void CPrediction::ARLreader(char* filename)
 
   for(int i = 1; i < nData; i++)
   {
-    file >> pData[i].press >> pData[i].height >> pData[i].temp >> garbage >> pData[i].VEast >> pData[i].VNorth;
+      file >> pData[i].press >> pData[i].height >> pData[i].temp >> /*garbage >>*/ pData[i].VEast >> pData[i].VNorth;
 
     pData[i].VEast  = pData[i].VEast / (M_PER_DEG * cos(launchLoc.coords.lat * M_PI / 180.0));
     pData[i].VNorth = pData[i].VNorth / M_PER_DEG;
@@ -171,7 +171,7 @@ void CPrediction::ascentPrediction()
 
   vol  = calcVol(temp, press);
   diam = calcDiam(vol);
-
+  
   while(diam <= burstDiam) 
   { 
     //diameter check performed here so burst point writes to file successfully
